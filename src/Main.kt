@@ -1,15 +1,15 @@
 import integers.myInteger
+import longs.myLong
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
 
-
     fun main() {
         /*** Data Types ***/
         // Integers
         myInteger(23)
-        val long: Long = 100000000000L
+        myLong(100000000000L)
 
         //Flotantes
         val float: Float = 3.14f
