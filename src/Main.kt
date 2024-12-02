@@ -1,10 +1,14 @@
+import integers.myInteger
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
+
+
     fun main() {
-        // 1. Tipos de datos
-        // Enteros
-        val integer: Int = 29
+        /*** Data Types ***/
+        // Integers
+        myInteger(23)
         val long: Long = 100000000000L
 
         //Flotantes
@@ -21,11 +25,6 @@ fun main() {
 
         // Cadenas (Los famosos Strings)
         val regards: String = "Hola mundo"
-
-        // Imprimir por terminal
-        println("Entero: " + integer)
-        println("isFavorite: " + isFavorite)
-        println("regards: " + regards)
 
         // 2. Bucles
         // For(y sus derivados), While, DoWhile
