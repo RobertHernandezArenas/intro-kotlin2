@@ -1,5 +1,5 @@
-import booleans.myBoolean
 import doubles.myDouble
+import exercises.Exercises
 import floats.myFloat
 import integers.myInteger
 import longs.myLong

@@ -1,3 +1,5 @@
+package exercises
+
 class Exercises {
 
     // Method for creating and launching an exercise
