@@ -8,6 +8,8 @@ import longs.myLong
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
 
+    val exercises = Exercises()
+    exercises.create()
 
     /*** Data Types ***/
     // Integers
@@ -17,7 +19,7 @@ fun main() {
     myDouble(3.1415926500054343)
 
     // Booleanos
- myBoolean()
+    // myBoolean()
 
     // Caracteres (Char)
     val characterr: Char = 'k'
@@ -30,7 +32,7 @@ fun main() {
     for (i in 0..5 step 2) {
         println("Value for i: " + i)
     }
-
+/*
     var valueA = 3
     val valueB = 5
     while (valueA < valueB) {
@@ -58,5 +60,5 @@ fun main() {
         else -> {
             println("No has ingresado un día válido")
         }
-    }
+    }*/
 }
