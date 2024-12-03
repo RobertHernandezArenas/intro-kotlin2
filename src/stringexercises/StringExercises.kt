@@ -13,6 +13,7 @@ class StringExercises {
         println("Select a string exercise (1-6):")
         println("1. Concat 2 strings")
         println("2. Replace char in string")
+        println("3. Remove char Start and End from string")
 
         val input = scanner.nextInt()
 
@@ -77,6 +78,24 @@ class StringExercises {
                 )
             }
 
+            // Exercise 3
+            3 -> {
+                println("You have selected option number 3")
+
+                // Get text
+                println("Please, Insert text:")
+                val phrase: String = readlnOrNull().toString()
+
+                // Get char to remove
+                println("Please, Insert a character to remove:")
+
+                // Convert charToRemove: String to Char
+                val charToRemove = scanner.next().single()
+
+                // Remove char result
+                println("[Char remove Output] ======> ${removecharStartEnd(phrase, charToRemove)}")
+            }
+
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
         }
@@ -93,4 +112,20 @@ class StringExercises {
     private fun replaceChar(phrase: String, charToSearch: Char, charToReplace: Char): String {
         return phrase.replace(Regex(charToSearch.toString()), charToReplace.toString())
     }
+
+    // Exercise 3
+    // TODO: try to do with regex or toMutableList()
+    private fun removecharStartEnd(phrase: String, character: Char): String {
+    // Verify if phrase is empty
+    if (phrase.isEmpty()) return phrase
+
+    // Char removed from start
+    val phraseWithCharRemovedFromStart = if (phrase.first() == character) phrase.drop(1) else phrase
+
+    // Char removed from last
+    val phraseWithCharRemovedFromLast = if (phraseWithCharRemovedFromStart.last() == character) phraseWithCharRemovedFromStart.dropLast(1) else phraseWithCharRemovedFromStart
+
+    // If char is not in phrase return phrase with no changes
+    return phraseWithCharRemovedFromLast
+}
 }
