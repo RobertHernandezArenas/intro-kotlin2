@@ -17,6 +17,7 @@ class StringExercises {
         println("3. Remove char Start and End from string")
         println("4. Duplicate 2 main chars from string")
         println("5. Two main chars are the same from last?")
+        println("6. Compare 2 strings are the same")
 
         val input = scanner.nextInt()
 
@@ -96,7 +97,7 @@ class StringExercises {
                 val charToRemove = scanner.next().single()
 
                 // Remove char result
-                println("[Char remove Output] ======> ${removecharStartEnd(phrase, charToRemove)}")
+                println("[Char remove Output] ======> ${removeCharStartEnd(phrase, charToRemove)}")
             }
             
             // Exercise 4
@@ -122,6 +123,21 @@ class StringExercises {
                 println("[Char duplicate Output] ======> ${twoMainCharsAreTheSameFromnLast(phrase)}")
             }
 
+            // Exercise 6
+            6 -> {
+                println("You have selected option number 6")
+
+                // Get text
+                println("Please, Insert text:")
+                val text1: String = readlnOrNull().toString()
+
+                println("Please, Insert text:")
+                val text2: String = readlnOrNull().toString()
+
+                // Remove char result
+                println("[Char duplicate Output] ======> ${verify2TextsAreTheSame(text1, text2)}")
+            }
+
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
         }
@@ -140,7 +156,7 @@ class StringExercises {
     }
 
     // Exercise 3
-    private fun removecharStartEnd(phrase: String, character: Char): String {
+    private fun removeCharStartEnd(phrase: String, character: Char): String {
         // TODO: try to do it with regex or toMutableList()
         
         // Verify if phrase is empty
@@ -177,4 +193,7 @@ class StringExercises {
         // Check if two main chars are the same
         return twoFirstChars == twoLastChars
     }
+
+    // Exercise 6
+    private fun verify2TextsAreTheSame(text1: String, text2: String): Boolean = text1.lowercase() == text2.lowercase()
 }
