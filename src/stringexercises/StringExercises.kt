@@ -10,11 +10,13 @@ class StringExercises {
         // Get user input from prompt terminal
         val scanner = Scanner(System.`in`)
 
+        // Print menu
         println("Select a string exercise (1-6):")
         println("1. Concat 2 strings")
         println("2. Replace char in string")
         println("3. Remove char Start and End from string")
         println("4. Duplicate 2 main chars from string")
+        println("5. Two main chars are the same from last?")
 
         val input = scanner.nextInt()
 
@@ -109,6 +111,17 @@ class StringExercises {
                 println("[Char duplicate Output] ======> ${duplicate2MainChars(phrase)}")
             }
 
+            5 -> {
+                println("You have selected option number 5")
+
+                // Get text
+                println("Please, Insert text:")
+                val phrase: String = readlnOrNull().toString()
+
+                // Remove char result
+                println("[Char duplicate Output] ======> ${twoMainCharsAreTheSameFromnLast(phrase)}")
+            }
+
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
         }
@@ -146,7 +159,22 @@ class StringExercises {
 
      // Exercise 4
     private fun duplicate2MainChars(phrase: String): String {
+        // Two first main chars
         val twoFirstChars = phrase.substring(0, 2)
+
+        // Two first main chars duplicated
         return "$twoFirstChars$twoFirstChars"
+    }
+
+    // Exercise 5
+    private fun twoMainCharsAreTheSameFromnLast(phrase: String): Boolean {
+        // Two first main chars
+         val twoFirstChars = phrase.substring(0, 2)
+
+        // Two last chars
+        val twoLastChars = phrase.dropLast(2)
+
+        // Check if two main chars are the same
+        return twoFirstChars == twoLastChars
     }
 }
