@@ -14,6 +14,7 @@ class StringExercises {
         println("1. Concat 2 strings")
         println("2. Replace char in string")
         println("3. Remove char Start and End from string")
+        println("4. Duplicate 2 main chars from string")
 
         val input = scanner.nextInt()
 
@@ -95,6 +96,18 @@ class StringExercises {
                 // Remove char result
                 println("[Char remove Output] ======> ${removecharStartEnd(phrase, charToRemove)}")
             }
+            
+            // Exercise 4
+            4 -> {
+                println("You have selected option number 4")
+
+                // Get text
+                println("Please, Insert text:")
+                val phrase: String = readlnOrNull().toString()
+
+                // Remove char result
+                println("[Char duplicate Output] ======> ${duplicate2MainChars(phrase)}")
+            }
 
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
@@ -114,18 +127,26 @@ class StringExercises {
     }
 
     // Exercise 3
-    // TODO: try to do with regex or toMutableList()
     private fun removecharStartEnd(phrase: String, character: Char): String {
-    // Verify if phrase is empty
-    if (phrase.isEmpty()) return phrase
+        // TODO: try to do it with regex or toMutableList()
+        
+        // Verify if phrase is empty
+        if (phrase.isEmpty()) return phrase
 
-    // Char removed from start
-    val phraseWithCharRemovedFromStart = if (phrase.first() == character) phrase.drop(1) else phrase
+        // Char removed from start
+        val phraseWithCharRemovedFromStart = if (phrase.first() == character) phrase.drop(1) else phrase
 
-    // Char removed from last
-    val phraseWithCharRemovedFromLast = if (phraseWithCharRemovedFromStart.last() == character) phraseWithCharRemovedFromStart.dropLast(1) else phraseWithCharRemovedFromStart
+        // Char removed from last
+        val phraseWithCharRemovedFromLast =
+            if (phraseWithCharRemovedFromStart.last() == character) phraseWithCharRemovedFromStart.dropLast(1) else phraseWithCharRemovedFromStart
 
-    // If char is not in phrase return phrase with no changes
-    return phraseWithCharRemovedFromLast
-}
+        // If char is not in phrase return phrase with no changes
+        return phraseWithCharRemovedFromLast
+    }
+
+     // Exercise 4
+    private fun duplicate2MainChars(phrase: String): String {
+        val twoFirstChars = phrase.substring(0, 2)
+        return "$twoFirstChars$twoFirstChars"
+    }
 }
