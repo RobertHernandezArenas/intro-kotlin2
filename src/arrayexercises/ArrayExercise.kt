@@ -10,8 +10,9 @@ class ArrayExercise {
         val scanner = Scanner(System.`in`)
 
         // Print menu
-        println("Select a string exercise (1-6):")
+        println("Select an Array exercise (1-6):")
         println("1. Push number to Array")
+        println("2. Find number in Array")
 
         val input = scanner.nextInt()
 
@@ -35,13 +36,29 @@ class ArrayExercise {
 
                 // Concat string result
                 println(
-                    "[Array Push Item Output] ======> ${
+                    "[Output] : ${
                         pushNumbToArrayByIndex(
                             buildArray(items), indexSelectedToPushItems.toInt(), itemToPush.toInt()
                         )
                     }"
                 )
             }
+
+            2 -> {
+                // Get array
+                val numbers = getInputTerminal("Please, type numbers separated by commas:").toString()
+
+                // Number to Find in array
+                val numberToFind = getInputTerminal("now, select the number to search for in array:")?.toInt()
+
+                // Result
+                println(
+                    "[Output] : ${
+                        findNumberInArray(buildArray(numbers), numberToFind)
+                    }"
+                )
+            }
+
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
         }
@@ -78,5 +95,10 @@ class ArrayExercise {
 
         // return th result
         return array.toMutableList().apply { add(index, item) }.toTypedArray()
+    }
+
+    // Exercise 2
+    private fun findNumberInArray(array: Array<Int>, number: Int?): Boolean {
+        return array.contains(number)
     }
 }
