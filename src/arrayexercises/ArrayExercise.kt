@@ -22,25 +22,22 @@ class ArrayExercise {
                 println("You have selected option number 1")
 
                 // Get first string
-                println("Please, type your items separated by commas:")
-                val firstString: String = readlnOrNull().toString()
+                val items = getInputTerminal("Please, type your items separated by commas:").toString()
 
                 // Get second string
-                println("Please, type the index where you want to add the item:")
-                val secondString: String = readlnOrNull().toString()
+                val indexSelectedToPushItems =
+                    getInputTerminal("Please, type the index where you want to add the item:").toString()
 
                 // Get third string
                 println("Please, type the item you want to add:")
-                val itemToAdd: String = readlnOrNull().toString()
+                val itemToPush: String = readlnOrNull().toString()
 
 
                 // Concat string result
                 println(
                     "[Array Push Item Output] ======> ${
                         pushNumbToArrayByIndex(
-                            stringToIntArray(firstString),
-                            secondString.toInt(),
-                            itemToAdd.toInt()
+                            buildArray(items), indexSelectedToPushItems.toInt(), itemToPush.toInt()
                         )
                     }"
                 )
@@ -48,15 +45,24 @@ class ArrayExercise {
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
         }
-
-
     }
 
-    //Utils 
-    private fun stringToIntArray(input: String, delimiter: String = ","): Array<Int> {
-        return input.split(delimiter) // Divide String
-            .map { it.trim().toInt() } // Sanitize and convert to Int
-            .toTypedArray() // Convert List to Array<Int>
+    companion object {
+
+        // Utils
+        fun getInputTerminal(message: String): String? {
+            println(message)
+            return readlnOrNull()
+        }
+
+        fun buildArray(input: String, delimiter: String = ","): Array<Int> {
+            //////// Divide String
+            return input.split(delimiter)
+                // Sanitize and convert to Integer
+                .map { it.trim().toInt() }
+                // Convert List to Array<Int>
+                .toTypedArray()
+        }
     }
 
     // Exercise 1
