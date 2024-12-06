@@ -13,6 +13,7 @@ class ArrayExercise {
         println("Select an Array exercise (1-6):")
         println("1. Push number to Array")
         println("2. Find number in Array")
+        println("3. Count how many times the number is repeated in Array")
 
         val input = scanner.nextInt()
 
@@ -59,6 +60,21 @@ class ArrayExercise {
                 )
             }
 
+            3 -> {
+                // Get array
+                val numbers = getInputTerminal("Please, type numbers separated by commas:").toString()
+
+                // Number to Find in array
+                val numberToFind = getInputTerminal("now, select the number to search for in array:")?.toInt()
+
+                // Result
+                println(
+                    "[Output] : The number is repeated ${
+                        countRepeatedNumbers(buildArray(numbers), numberToFind)
+                    } times"
+                )
+            }
+
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
         }
@@ -100,5 +116,10 @@ class ArrayExercise {
     // Exercise 2
     private fun findNumberInArray(array: Array<Int>, number: Int?): Boolean {
         return array.contains(number)
+    }
+
+    //Exercise 3
+    private fun countRepeatedNumbers(array: Array<Int>, num: Int?): Int {
+        return array.count { it == num }
     }
 }
