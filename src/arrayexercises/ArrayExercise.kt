@@ -14,6 +14,7 @@ class ArrayExercise {
         println("1. Push number to Array")
         println("2. Find number in Array")
         println("3. Count how many times the number is repeated in Array")
+        println("4. Order array DESC")
 
         val input = scanner.nextInt()
 
@@ -75,6 +76,19 @@ class ArrayExercise {
                 )
             }
 
+            4-> {
+                // Get array
+                val numbers = getInputTerminal("Please, type numbers separated by commas:").toString()
+
+                // Result
+                println(
+                    "[Output] : Array ordered: ${
+                        orderDescArray(buildArray(numbers)).contentToString()
+                    } "
+                )
+
+            }
+
             // Default if user does not select an exercise or the exercise does not exist
             else -> println("The exercise you have selected does not exist")
         }
@@ -118,8 +132,23 @@ class ArrayExercise {
         return array.contains(number)
     }
 
-    //Exercise 3
+    // Exercise 3
     private fun countRepeatedNumbers(array: Array<Int>, num: Int?): Int {
         return array.count { it == num }
+    }
+
+    // Exercise 4
+    private fun orderDescArray(array: Array<Int>): Array<Int> {
+        for (i in array.indices) {
+            for (j in i..<array.size) {
+                if (array[i] < array[j]) {
+                    val temp = array[i]
+                    array[i] = array[j]
+                    array[j] = temp
+                }
+            }
+        }
+
+        return array
     }
 }
