@@ -1,6 +1,9 @@
 package arrayexercises
 
+import utilities.Build
 import java.util.*
+
+val build = Build()
 
 class ArrayExercise {
 
@@ -11,10 +14,11 @@ class ArrayExercise {
 
         // Print menu
         println("Select an Array exercise (1-6):")
-        println("1. Push number to Array")
-        println("2. Find number in Array")
-        println("3. Count how many times the number is repeated in Array")
+        println("1. Push number by index into Array")
+        println("2. Find number into Array")
+        println("3. Count how many times the number is repeated into Array")
         println("4. Order array DESC")
+        println("5. Push string into array")
 
         val input = scanner.nextInt()
 
@@ -25,30 +29,32 @@ class ArrayExercise {
                 println("You have selected option number 1")
 
                 // Get first string
-                val items = getInputTerminal("Please, type your items separated by commas:").toString()
+                val items = getInputTerminal("Please, type your items separated by commas:") ?: ""
 
                 // Get second string
                 val indexSelectedToPushItems =
-                    getInputTerminal("Please, type the index where you want to add the item:").toString()
+                    getInputTerminal("Please, type the index where you want to add the item:") ?: ""
 
                 // Get third string
                 println("Please, type the item you want to add:")
-                val itemToPush: String = readlnOrNull().toString()
-
+                val itemToPush: String = readlnOrNull() ?: ""
 
                 // Concat string result
                 println(
                     "[Output] : ${
                         pushNumbToArrayByIndex(
-                            buildArray(items), indexSelectedToPushItems.toInt(), itemToPush.toInt()
+                            build.createIntArray(items),
+                            indexSelectedToPushItems.toInt(),
+                            itemToPush.toInt()
                         )
                     }"
                 )
             }
 
+            // Exercise 2
             2 -> {
                 // Get array
-                val numbers = getInputTerminal("Please, type numbers separated by commas:").toString()
+                val numbers = getInputTerminal("Please, type numbers separated by commas:") ?: ""
 
                 // Number to Find in array
                 val numberToFind = getInputTerminal("now, select the number to search for in array:")?.toInt()
@@ -56,14 +62,15 @@ class ArrayExercise {
                 // Result
                 println(
                     "[Output] : ${
-                        findNumberInArray(buildArray(numbers), numberToFind)
+                        findNumberInArray(build.createIntArray(numbers), numberToFind)
                     }"
                 )
             }
 
+            // Exercise 3
             3 -> {
                 // Get array
-                val numbers = getInputTerminal("Please, type numbers separated by commas:").toString()
+                val numbers = getInputTerminal("Please, type numbers separated by commas:") ?: ""
 
                 // Number to Find in array
                 val numberToFind = getInputTerminal("now, select the number to search for in array:")?.toInt()
@@ -71,22 +78,39 @@ class ArrayExercise {
                 // Result
                 println(
                     "[Output] : The number is repeated ${
-                        countRepeatedNumbers(buildArray(numbers), numberToFind)
+                        countRepeatedNumbers(build.createIntArray(numbers), numberToFind)
                     } times"
                 )
             }
 
-            4-> {
+            // Exercise 4
+            4 -> {
                 // Get array
-                val numbers = getInputTerminal("Please, type numbers separated by commas:").toString()
+                val numbers = getInputTerminal("Please, type numbers separated by commas:") ?: ""
 
                 // Result
                 println(
                     "[Output] : Array ordered: ${
-                        orderDescArray(buildArray(numbers)).contentToString()
+                        orderDescArray(build.createIntArray(numbers))
                     } "
                 )
 
+            }
+
+            // Exercise 5
+            5 -> {
+                // Get array
+                val texts = getInputTerminal("Please, type numbers separated by commas:") ?: ""
+
+                // Number to Find in array
+                val textToPush = getInputTerminal("now, select the number to search for in array:") ?: ""
+
+                // Result
+                println(
+                    "[Output] : ${
+                        pushStringIntoArray(build.createStringArray(texts), textToPush)
+                    }"
+                )
             }
 
             // Default if user does not select an exercise or the exercise does not exist
@@ -100,15 +124,6 @@ class ArrayExercise {
         fun getInputTerminal(message: String): String? {
             println(message)
             return readlnOrNull()
-        }
-
-        fun buildArray(input: String, delimiter: String = ","): Array<Int> {
-            //////// Divide String
-            return input.split(delimiter)
-                // Sanitize and convert to Integer
-                .map { it.trim().toInt() }
-                // Convert List to Array<Int>
-                .toTypedArray()
         }
     }
 
@@ -150,5 +165,12 @@ class ArrayExercise {
         }
 
         return array
+    }
+
+    // Exercise 5
+    private fun pushStringIntoArray(array: Array<String>, text: String?): Array<String?> {
+        val newArr = array.copyOf(array.size + 1)
+        newArr[array.size] = text
+        return newArr
     }
 }
