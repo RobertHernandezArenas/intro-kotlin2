@@ -17,6 +17,7 @@ fun main() {
     println("1. INT EXERCISES ")
     println("2. STRING EXERCISES")
     println("3. ARRAY EXERCISES")
+    println("4. ARRAY OBJECTS")
 
     val input = scanner.nextInt()
 
