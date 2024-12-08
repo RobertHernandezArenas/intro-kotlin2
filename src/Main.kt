@@ -1,5 +1,4 @@
 import arrayexercises.ArrayExercise
-import arrayobjectsexercises.ArrayObjectsExercise
 import doubles.myDouble
 import exercises.Exercises
 import floats.myFloat
@@ -40,8 +39,11 @@ fun main() {
         }
 
         4 -> {
+            /*
             val arrayObjectExercise = ArrayObjectsExercise()
+
             arrayObjectExercise.start()
+               */
         }
 
         else -> println("No exercises selected")

@@ -194,7 +194,7 @@ class ArrayExercise {
     }
 
     // Exercise 5
-    private fun pushStringIntoArray(array: Array<String>, text: String?): Array<String?> {
+     fun pushStringIntoArray(array: Array<String>, text: String?): Array<String?> {
         val newArr = array.copyOf(array.size + 1)
         newArr[array.size] = text
         return newArr
