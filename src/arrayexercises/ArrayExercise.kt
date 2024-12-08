@@ -19,6 +19,7 @@ class ArrayExercise {
         println("3. Count how many times the number is repeated into Array")
         println("4. Order array DESC")
         println("5. Push string into array")
+        println("6. Return the first missing number within the range given an array")
 
         val input = scanner.nextInt()
 
@@ -111,6 +112,31 @@ class ArrayExercise {
                         pushStringIntoArray(build.createStringArray(texts), textToPush)
                     }"
                 )
+
+
+            }
+
+            6 -> {
+                // Get array
+                val arrayNumbers = getInputTerminal("Please, type numbers separated by commas:") ?: ""
+
+                // Range number begin
+                val rangeNumberStart = getInputTerminal("now, select the range number to start")?.toInt() ?: 1
+
+                // Range number finish
+                val rangeNumberEnd = getInputTerminal("now, select the range number to end")?.toInt() ?: 1000000
+
+                // Result
+                println(
+                    "[Output] : ${
+                        returnFirstNumberNotExistsInRange(
+                            build.createIntArray(arrayNumbers),
+                            rangeNumberStart,
+                            rangeNumberEnd
+                        )
+                    }"
+                )
+
             }
 
             // Default if user does not select an exercise or the exercise does not exist
@@ -172,5 +198,22 @@ class ArrayExercise {
         val newArr = array.copyOf(array.size + 1)
         newArr[array.size] = text
         return newArr
+    }
+
+    // Exercise 6
+    private fun returnFirstNumberNotExistsInRange(
+        array: Array<Int>,
+        rangeStart: Int,
+        rangeEnd: Int
+    ): Int {
+        for (index in rangeStart..rangeEnd) {
+            // Verify if number not exist into the array using .contains() an return it
+            if (!array.contains(index)) {
+                return index
+            }
+        }
+
+        // return the following number from rangeEnd
+        return rangeEnd + 1
     }
 }
