@@ -3,7 +3,7 @@ package exercises
 class Exercises {
 
     // Method for creating and launching an exercise
-    fun create() {
+    fun start() {
 
         println("Select an exercise number (1-8):")
         val input = readlnOrNull()?.toIntOrNull()

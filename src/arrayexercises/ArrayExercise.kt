@@ -92,7 +92,7 @@ class ArrayExercise {
                 // Result
                 println(
                     "[Output] : Array ordered: ${
-                        orderDescArray(build.createIntArray(numbers))
+                        orderDescArray(build.createIntArray(numbers)).contentToString()
                     } "
                 )
 
