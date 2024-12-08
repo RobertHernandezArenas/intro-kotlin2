@@ -1,7 +1,7 @@
 package classes.students
 
 class Student(
-    name: String,
-    surname: String,
-    age: Int
+    var name: String,
+    var surname: String,
+    var age: Int
 )

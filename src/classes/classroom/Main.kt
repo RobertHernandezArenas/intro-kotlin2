@@ -3,6 +3,6 @@ package classes.classroom
 import classes.students.Student
 
 class ClassRoom(
-    name : String,
-    students: Array<Student>
+    val name : String,
+    val students: Array<Student> // Array<Student>
 )
