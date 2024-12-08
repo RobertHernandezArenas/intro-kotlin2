@@ -5,5 +5,6 @@ class Student(
     var surname: String,
     var age: Int,
     var isApproved: Boolean,
-    var isProgressing : Boolean
+    var isProgressing : Boolean,
+    var needHelp : Boolean
 )
