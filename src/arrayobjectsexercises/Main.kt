@@ -70,4 +70,8 @@ fun main() {
         val studentsWithA = classroom.students.filter { it.needHelp }.map { it.name }
         println("Students failed and not progressing  and need help :::::> ${studentsWithA.toTypedArray().contentToString()}")
     }
+
+    // Exercise 5
+    val suspendedStudents = classRoomWithStudents.flatMap { it.students.asList() }.filter { !it.isApproved && !it.isProgressing }.map { it.name }
+    println("Suspended students from 2 classrooms :::> ${suspendedStudents.toTypedArray().contentToString()}")
 }
